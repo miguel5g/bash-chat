@@ -15,15 +15,15 @@ const commandsDocs = {
     description: 'Limpar o terminal',
   },
   user: {
-    usage: 'user [definir] [valor]',
+    usage: 'user definir [nome]',
     description: 'Definir ou retornar o nome do usuário',
   },
   sala: {
-    usage: 'sala [opcao] [valor]',
+    usage: 'sala',
     description: 'Opções de sala de bate-papo',
   },
   msg: {
-    usage: 'msg [valor]',
+    usage: 'msg [mensagem]',
     description: 'Enviar uma mensagem na sala conectada',
   },
 }
@@ -77,7 +77,7 @@ const commands = {
     run: (terminal, args = []) => {
       if (args.length <= 0) {
         const out1String = `<span style="color: var(--light-red);">Você precisa definir uma opção</span>`;
-        const out2String = `<span style="color: var(--light-red);">sala [criar|entrar|listar|sair] [valor]</span>`;
+        const out2String = `<span style="color: var(--light-red);">sala [criar|entrar|listar|sair] [nome da sala]</span>`;
         return terminal.print(out1String + out2String);
       }
 
@@ -86,8 +86,8 @@ const commands = {
           if (room) return terminal.print(`<span style="color: var(--light-red);">Você não pode criar uma sala enquanto estiver conectado em uma</span>`);
 
           if (args.length <= 1) {
-            const out1String = `<span style="color: var(--light-red);">Você precisa definir um valor</span>`;
-            const out2String = `<span style="color: var(--light-red);">sala [criar] [valor]</span>`;
+            const out1String = `<span style="color: var(--light-red);">Você precisa definir um nome para sala</span>`;
+            const out2String = `<span style="color: var(--light-red);">sala [criar] [nome]</span>`;
             return terminal.print(out1String + out2String);
           }
 
@@ -98,7 +98,7 @@ const commands = {
               let resOut = '';
               if (res) {
                 resOut = `<span style="color: var(--green);">Sala criada com sucesso</span>`
-                  + `<span style="color: var(--white);">Envie uma mensagem usando msg [valor]</span>`;
+                  + `<span style="color: var(--white);">Envie uma mensagem usando msg [mensagem]</span>`;
                 room = args[1];
               } else {
                 resOut = `<span style="color: var(--light-red);">Já existe uma sala com esse nome</span>`;
@@ -124,7 +124,7 @@ const commands = {
             }
 
             room = args[1];
-            terminal.print(`<span style="color: var(--white);">Envie uma mensagem usando msg [valor]</span>`);
+            terminal.print(`<span style="color: var(--white);">Envie uma mensagem usando msg [mensagem]</span>`);
           });
           break;
 

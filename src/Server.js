@@ -44,6 +44,18 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log(`[${socket.id}] User disconnected`);
     delete users[socket.id];
+
+    let room = null;
+
+    Object.keys(rooms).forEach((key) => {
+      if (rooms[key].users.includes(socket.id)) room = key;
+    });
+
+    if (!room) return;
+
+    rooms[room].users = rooms[room].users.filter((user) => user !== socket.id);
+
+    if (rooms[room].users.length <= 0) delete rooms[room];
   });
 
   socket.on('change_user', (data) => {
