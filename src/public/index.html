@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/index.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.2/socket.io.js" integrity="sha512-YybopSVjZU0fe8TY4YDuQbP5bhwpGBE/T6eBUEZ0usM72IWBfWrgVI13qfX4V2A/W7Hdqnm7PIOYOwP9YHnICw==" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/Terminal.js"></script>
+  <script src="./js/index.js"></script>
+
+  <title>BashChat</title>
+</head>
+
+<body>
+  <div id="terminal" class="terminal">
+    <header>
+      <strong>Terminal</strong>
+    </header>
+
+    <div>
+      <main>
+        <span>Tente usar <i style="color: var(--white);">comandos</i> para listar todos os comandos</span>
+      </main>
+
+      <footer>
+        <span id="user">loading</span>
+        &nbsp;
+        <div id="terminal-input" class="input" type="text" contenteditable="true">
+          <div></div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>

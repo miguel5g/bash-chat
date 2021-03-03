@@ -1,0 +1,74 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  max-height: 512px;
+  width: 100%;
+  max-width: 800px;
+
+  background: var(--background);
+  border-radius: 5px;
+  box-shadow: 0 7px 30px rgba(0, 0, 0, 0.75);
+
+  font-family: 'Fira Code', sans-serif;
+  font-size: medium;
+}
+
+.terminal header {
+  text-align: center;
+
+  padding: 7px 7px 3px;
+
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.terminal header strong {
+  color: var(--title);
+  font-weight: 400;
+  font-size: larger;
+}
+
+.terminal main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 7px 7px 0;
+
+  word-wrap: break-word;
+}
+
+.terminal main i {
+  font-style: normal;
+}
+
+.terminal > div {
+  overflow-y: scroll;
+}
+
+.terminal > div::-webkit-scrollbar {
+  display: none;
+}
+
+.terminal footer {
+  display: flex;
+
+  padding: 0 7px 7px;
+}
+
+.terminal footer span {
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+.terminal footer div.input {
+  width: 100%;
+
+  /* background: #FFF; */
+  border: none;
+  
+  color: var(--white);
+  font-family: 'Fira Code', sans-serif;
+  font-size: medium;
+  word-wrap: break-word;
+}

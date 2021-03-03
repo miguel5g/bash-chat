@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  padding: 26px;
+
+  background: #00b7ff;
+
+  color: var(--text);
+  font-family: Helvetica, sans-serif;
+}
+
+:root {
+  --white: #FFF;
+  --red: #eb1010;
+  --light-red: #f05656;
+  --green: #10eb4b;
+  --yellow: #ebe710;
+  --title: #fff;
+  --text: #888;
+  --background: #000;
+  --gray-line: #1a1a1a;
+}
