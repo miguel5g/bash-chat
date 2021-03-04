@@ -3,6 +3,7 @@ const cors = require('cors');
 const socketIO = require("socket.io");
 const http = require('http');
 const path = require('path');
+const { stripHtml } = require('string-strip-html');
 
 const app = express();
 const server = http.createServer(app);
@@ -111,7 +112,7 @@ io.on('connection', (socket) => {
     const sender = users[socket.id];
 
     rooms[data.name].users.filter((user) => user !== socket.id).forEach((user) => {
-      users[user].socket.emit('message', { user: sender.user, message: data.message });
+      users[user].socket.emit('message', { user: sender.user, message: stripHtml(data.message).result });
     });
   });
 });
