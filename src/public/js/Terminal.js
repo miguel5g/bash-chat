@@ -2,7 +2,7 @@
 const SPACE = '&nbsp;';
 const BIGGER_THEN = '&gt;';
 const LESS_THEN = '	&lt;';
-let user = 'user_' + Date.now();
+let user = localStorage.getItem('@bash-chat/user') || 'user_' + Date.now();
 let room = null;
 
 const commandsDocs = {
@@ -59,6 +59,7 @@ const commands = {
         const rgx = /^[a-zA-Z0-9]+$/g;
         if (args[1].length > 4 && args[1].length < 15 && rgx.test(args[1])) {
           user = args[1];
+          localStorage.setItem('@bash-chat/user', args[1]);
           terminal.changeUser();
           const outString = `<span style="color: var(--green);">User alterado</span>`;
           return terminal.print(outString);
