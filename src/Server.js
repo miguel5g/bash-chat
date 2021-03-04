@@ -44,7 +44,6 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log(`[${socket.id}] User disconnected`);
-    delete users[socket.id];
 
     let room = null;
 
@@ -57,6 +56,13 @@ io.on('connection', (socket) => {
     rooms[room].users = rooms[room].users.filter((user) => user !== socket.id);
 
     if (rooms[room].users.length <= 0) delete rooms[room];
+    else {
+      rooms[room].users.filter((user) => user !== socket.id).forEach((user) => {
+        users[user].socket.emit('user_quit', { user: users[socket.id].user })
+      });
+    }
+
+    delete users[socket.id];
   });
 
   socket.on('change_user', (data) => {
@@ -86,6 +92,9 @@ io.on('connection', (socket) => {
     }
 
     rooms[data.name].users.push(socket.id);
+    rooms[data.name].users.filter((user) => user !== socket.id).forEach((user) => {
+      users[user].socket.emit('user_join', { user: users[socket.id].user })
+    });
     return cb(200);
   });
 
@@ -100,6 +109,11 @@ io.on('connection', (socket) => {
     cb(200);
 
     if (rooms[data.name].users.length <= 0) delete rooms[data.name];
+    else {
+      rooms[data.name].users.filter((user) => user !== socket.id).forEach((user) => {
+        users[user].socket.emit('user_quit', { user: users[socket.id].user })
+      });
+    }
   });
 
   socket.on('send_message', (data) => {

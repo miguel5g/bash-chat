@@ -207,6 +207,8 @@ class Terminal {
     }
 
     this.socket.on('message', (data) => this.onMessage(this, data));
+    this.socket.on('user_join', (data) => this.onUserJoin(this, data));
+    this.socket.on('user_quit', (data) => this.onUserQuit(this, data));
   }
 
   clear() {
@@ -224,6 +226,14 @@ class Terminal {
 
   onMessage(terminal, data) {
     terminal.print(`<span style="color: var(--white);"><i style="color: var(--green);font-weight: 600;">${data.user}</i>${SPACE}${data.message}</span>`);
+  }
+
+  onUserJoin(terminal, data) {
+    terminal.print(`<span style="color: var(--blue);"><i style="color: var(--blue);font-weight: 600;">${data.user}</i>${SPACE}entrou na sala</span>`);
+  }
+
+  onUserQuit(terminal, data) {
+    terminal.print(`<span style="color: var(--blue);"><i style="color: var(--blue);font-weight: 600;">${data.user}</i>${SPACE}saiu da sala</span>`);
   }
 
   printEmptyLine() {
