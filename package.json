@@ -1,8 +1,18 @@
 {
   "name": "bash-chat",
+  "description": "A simple real time chat with terminal style",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "Miguel Ângelo",
+  "homepage": "https://github.com/miguel5g/bash-chat#readme",
+  "bugs": {
+    "url": "https://github.com/miguel5g/bash-chat/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguel5g/bash-chat.git"
+  },
   "scripts": {
     "start": "node ./src/Server.js",
     "dev": "nodemon --ignore ./src/views ./src/Server.js"
